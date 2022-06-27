@@ -269,8 +269,6 @@ def handle_scripts(scripts):
             """
         )
         scripts_pretty = ", ".join(scripts)
-        click.confirm(f"Are you sure you want to inject these scripts: {scripts_pretty}?", abort=True)
-
 
 class CliLaunchServer(Server):
     """

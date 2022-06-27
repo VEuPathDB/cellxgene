@@ -1,6 +1,9 @@
 import uniq from "lodash.uniq";
 import filter from "lodash.filter";
 
+const urlParams = new URLSearchParams(window.location.search);
+const geneFromUrl = urlParams.get("gene");
+
 const Controls = (
   state = {
     // data loading flag
@@ -8,7 +11,7 @@ const Controls = (
     error: null,
 
     // all of the data + selection state
-    userDefinedGenes: [],
+    userDefinedGenes: geneFromUrl ? [geneFromUrl] : [],
     userDefinedGenesLoading: false,
 
     resettingInterface: false,
