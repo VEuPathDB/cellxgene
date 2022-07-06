@@ -20,4 +20,7 @@ WORKDIR /project_home/cellxgene/build
 
 RUN pip3 install .
 
+
+COPY ["scripts/paintGene.js", "/usr/local/lib/python3.8/dist-packages/server/common/web/static/paintGene.js"]
+
 #ENTRYPOINT ["cellxgene"]
