@@ -10,20 +10,23 @@ window.onload = function() {
     temp1.style.gridTemplateColumns = '[left-sidebar-start] 0px [left-sidebar-end graph-start] auto [graph-end right-sidebar-start] 400px [right-sidebar-end]';
     temp1.style.minWidth = "800px";
 
-    document.getElementsByClassName("bp3-button-group").forEach(element => element.style.visibility="hidden");
-    document.getElementsByClassName("bp3-popover-wrapper").forEach(element => element.style.visibility="hidden");
-    document.getElementsByClassName("bp3-heading").forEach(element => element.style.visibility="hidden");
-    document.getElementsByClassName("bp3-intent-primary").forEach(element => element.style.visibility="hidden");
+    Array.prototype.forEach.call(document.getElementsByClassName("bp3-button-group"), function(element) { element.style.visibility="hidden" });
+    Array.prototype.forEach.call(document.getElementsByClassName("bp3-popover-wrapper"), function(element) { element.style.visibility="hidden" });
+    Array.prototype.forEach.call(document.getElementsByClassName("bp3-heading"), function(element) { element.style.visibility="hidden" });
+    Array.prototype.forEach.call(document.getElementsByClassName("bp3-intent-primary"), function(element) { element.style.visibility="hidden" });
   }
   
   if(gene != null) {
-    document.getElementsByClassName("bp3-button").forEach(element => {
+
+    var els = document.getElementsByClassName("bp3-button");
+    Array.prototype.forEach.call(els, function(element) {
       var id = element.getAttribute("data-testid");
       if(id === "colorby-" + gene) {
         element.click();
       }
     });
-    document.getElementsByClassName("bp3-button").forEach(element => {
+
+    Array.prototype.forEach.call(els, function(element) {
       var id = element.getAttribute("data-testid");
       if(id === "maximize-" + gene) {
         element.click();
