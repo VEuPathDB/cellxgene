@@ -20,6 +20,16 @@ WORKDIR /project_home/cellxgene/build
 
 RUN pip3 install .
 
+# gateway
+RUN pip install cellxgene-gateway 'MarkupSafe<2.1'
+
+ENV CELLXGENE_DATA=/cellxgene-data
+ENV CELLXGENE_LOCATION=/usr/local/bin/cellxgene
+ENV GATEWAY_EXTRA_SCRIPTS=[\"static/paintGene.js\"]
+
+CMD ["cellxgene-gateway"]
+
+
 
 COPY ["scripts/paintGene.js", "/usr/local/lib/python3.8/dist-packages/server/common/web/static/paintGene.js"]
 

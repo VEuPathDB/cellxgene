@@ -1,0 +1,31 @@
+---
+version: "3.5"
+
+services:
+  gateway:
+    image: cellxgene-gateway:${GATEWAY_TAG:-latest}
+    volumes:
+    - ./cellxgene_data:/cellxgene_data
+    networks:
+    - internal
+    - traefik
+    environment:
+      CELLXGENE_DATA: /cellxgene_data
+      CELLXGENE_ARGS: "--disable-gene-sets-save"
+    labels:
+    - "com.centurylinklabs.watchtower.enable=${GATEWAY_WATCHTOWER:-false}"
+    - "traefik.http.routers.${TRAEFIK_ROUTER:-cellxgene-dev}.rule=Host(`${TRAEFIK_HOST:-cellxgene-dev.local.apidb.org}`)"
+    - "traefik.http.routers.${TRAEFIK_ROUTER:-cellxgene-dev}.tls=true"
+    - "traefik.http.routers.${TRAEFIK_ROUTER:-cellxgene-dev}.entrypoints=${TRAEFIK_ENTRYPOINTS:-local}"
+    - "traefik.http.services.${TRAEFIK_ROUTER:-cellxgene-dev}.loadbalancer.server.port=${SERVICE_PORT:-5005}"
+    - "traefik.docker.network=traefik"
+    - "prometheus-scrape.enabled=true"
+
+networks:
+  internal:
+    internal: true
+  traefik:
+    external: true
+#  monitoring-ext:
+#    external: true
+
