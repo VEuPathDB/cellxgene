@@ -3,7 +3,7 @@ version: "3.5"
 
 services:
   gateway:
-    image: cellxgene-gateway:${GATEWAY_TAG:-latest}
+    image: veupathdb/cellxgene:${GATEWAY_TAG:-latest}
     volumes:
     - ${CELLXGENE_DATA_MOUNT:-/tmp/cellxgene_data}:/cellxgene_data
     networks:
