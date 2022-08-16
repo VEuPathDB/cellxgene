@@ -7,8 +7,8 @@ services:
     volumes:
     - ${CELLXGENE_DATA_MOUNT:-/tmp/cellxgene_data}:/cellxgene_data
     networks:
-    - internal
     - traefik
+    - monitoring-ext
     environment:
       CELLXGENE_DATA: /cellxgene_data
       CELLXGENE_ARGS: "--disable-gene-sets-save"
@@ -24,8 +24,6 @@ services:
     - "prometheus-scrape.enabled=true"
 
 networks:
-  internal:
-    internal: true
   traefik:
     external: true
   monitoring-ext:
