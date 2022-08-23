@@ -21,7 +21,7 @@ from .. import __version__
 )
 @click.option(
     "--upgrade-check/--no-upgrade-check",
-    default=True,
+    default=False,
     show_default=True,
     help="Check for release upgrades on start.",
 )
