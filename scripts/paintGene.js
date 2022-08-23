@@ -37,6 +37,7 @@ window.addEventListener("load", function() {
           Array.prototype.forEach.call(document.getElementsByClassName("bp3-popover-wrapper"), function(element) { element.style.visibility="hidden"; });
           Array.prototype.forEach.call(document.getElementsByClassName("bp3-heading"), function(element) {  element.style.visibility="hidden"; });
           Array.prototype.forEach.call(document.getElementsByClassName("bp3-intent-primary"), function(element) {  element.style.visibility="hidden"; });
+          Array.prototype.forEach.call(document.getElementsByClassName("bp3-button"), function(element) {  element.style.visibility="hidden"; });
       }
       
       if(gene != null) {
