@@ -14,7 +14,6 @@ const CspHashPlugin = require("./cspHashPlugin");
 const sharedConfig = require("./webpack.config.shared");
 
 const fonts = path.resolve("src/fonts");
-const images = path.resolve("src/images");
 const nodeModules = path.resolve("node_modules");
 
 const prodConfig = {
@@ -44,11 +43,11 @@ const prodConfig = {
       {
         test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2|otf)$/i,
         loader: "file-loader",
-        include: [nodeModules, fonts, images],
+        include: [nodeModules, fonts],
         options: {
           name: "static/assets/[name]-[contenthash].[ext]",
           // (thuang): This is needed to make sure @font url path is '../static/assets/'
-          publicPath: "..",
+          publicPath: "static/",
         },
       },
     ],

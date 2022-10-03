@@ -2,6 +2,8 @@ const path = require("path");
 const fs = require("fs");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ObsoleteWebpackPlugin = require("obsolete-webpack-plugin");
+// eslint-disable-next-line @blueprintjs/classes-constants -- incorrect match
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 
 const src = path.resolve("src");
 const nodeModules = path.resolve("node_modules");
@@ -64,6 +66,9 @@ module.exports = {
       name: "obsolete",
       template: obsoleteHTMLTemplate,
       promptOnNonTargetBrowser: false,
+    }),
+    new ScriptExtHtmlWebpackPlugin({
+      async: "obsolete",
     }),
   ],
 };
