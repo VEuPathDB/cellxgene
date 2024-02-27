@@ -10,7 +10,7 @@ services:
     - traefik
     - monitoring-ext
     environment:
-      CELLXGENE_DATA: /cellxgene_data
+      CELLXGENE_DATA: /cellxgene_data/VEuPathDB/${DB_BUILD:-build-67}/cellxgene/
       CELLXGENE_ARGS: "--disable-gene-sets-save"
       GATEWAY_EXPIRE_SECONDS: ${GATEWAY_EXPIRE_SECONDS:-300}
       GATEWAY_PORT: 80
